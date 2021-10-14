@@ -1,5 +1,5 @@
 import React from 'react';
-import 'moment/locale/ko';
+import { ko } from 'dayjs/locale/ko';
 import {
   Modal,
   Paper,
@@ -11,9 +11,10 @@ import {
 } from '@mui/material';
 import { CancelOutlined } from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import DateAdapter from '@mui/lab/AdapterMoment';
-import { DesktopDatePicker, LocalizationProvider } from '@mui/lab';
+import DateAdapter from '@mui/lab/AdapterDayjs';
+import { DatePicker, LocalizationProvider } from '@mui/lab';
 import useStyles from './styles';
+import dayjs from 'dayjs';
 
 const theme = createTheme({
   palette: {
@@ -30,8 +31,15 @@ const Form = ({
   todoData,
   setTodoData,
   date,
+  setDate,
 }) => {
   const classes = useStyles();
+  const handleChange = (newDate) => {
+    let formatDate = dayjs(newDate).format('YYYY-MM-DD');
+    setDate(formatDate);
+    setTodoData({ ...todoData, endDate: formatDate });
+  };
+
   return (
     <Modal
       open={open}
@@ -74,15 +82,16 @@ const Form = ({
               setTodoData({ ...todoData, content: e.target.value })
             }
           ></TextField>
-          <LocalizationProvider dateAdapter={DateAdapter}>
-            <DesktopDatePicker
+          <LocalizationProvider dateAdapter={DateAdapter} locale={ko}>
+            <DatePicker
               label="종료일을 지정해주세요"
               name="endDate"
+              mask="____-__-__"
+              value={date}
               inputFormat="YYYY-MM-DD"
-              value={todoData.endDate}
-              onChange={(newDate) =>
-                setTodoData({ ...todoData, endDate: newDate })
-              }
+              onChange={(newDate) => {
+                handleChange(newDate);
+              }}
               renderInput={(params) => (
                 <TextField {...params} style={{ marginTop: 35 }} />
               )}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 import { createGlobalStyle } from 'styled-components';
 import Momenting from './components/MomentingIndex/Momenting';
 import Navbar from './components/Navbar/Navbar';
@@ -15,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  dayjs.locale('ko');
   return (
     <div>
       <GlobalStyle />

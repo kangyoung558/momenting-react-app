@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import 'moment/locale/ko';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 import { IconButton } from '@mui/material';
 import { AddCircleOutline } from '@material-ui/icons';
 import { createTodo, updateTodo } from '../../../actions/todos';
@@ -17,6 +17,8 @@ const AddTodo = ({ todoId, setTodoId }) => {
   const todo = useSelector((state) =>
     todoId ? state.todos.find((p) => p.id === todoId) : null
   );
+  const nowDate = dayjs().format('YYYY-MM-DD');
+
   //모먼트 날짜 상태 관리
   const [date, setDate] = useState(null);
 
@@ -62,6 +64,7 @@ const AddTodo = ({ todoId, setTodoId }) => {
         todoData={todoData}
         setTodoData={setTodoData}
         date={date}
+        setDate={setDate}
       />
     </div>
   );

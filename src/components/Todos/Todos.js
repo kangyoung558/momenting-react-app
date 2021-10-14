@@ -11,7 +11,7 @@ const Todos = ({ todoId, setTodoId }) => {
   return (
     <Container maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
-        <TodoHead todoId={todoId} setTodoId={setTodoId} />
+        <TodoHead todoId={todoId} setTodoId={setTodoId} todos={todos} />
         {todos.map((todo) => (
           <Todo
             key={todo.id}

@@ -6,11 +6,15 @@ import {
   DeleteOutline,
   EditOutlined,
 } from '@mui/icons-material';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 import useStyles from './styles';
 import UpdateTodo from '../UpdateTodo/UpdateTodo';
 
 const Todo = ({ todo, todoId, setTodoId }) => {
   const classes = useStyles(todo);
+  const startDate = dayjs(todo.createdDate).format('MM월 DD일');
+  const endDate = dayjs(todo.endDate).format('MM월 DD일');
   return (
     <Paper
       elevation={0}
@@ -30,7 +34,7 @@ const Todo = ({ todo, todoId, setTodoId }) => {
           <Typography style={{ fontSize: 12 }}>{todo.title}</Typography>
           <Typography style={{ fontWeight: 'bold' }}>{todo.content}</Typography>
           <Typography style={{ fontSize: 12, fontWeight: 'lighter' }}>
-            0월 0일 부터 0월 0일 까지
+            {startDate} 부터 {endDate} 까지
           </Typography>
         </Grid>
         <Grid
