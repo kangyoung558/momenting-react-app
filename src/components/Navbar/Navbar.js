@@ -1,14 +1,16 @@
-import React from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import useStyles from "./styles";
+import React from 'react';
+import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
+import useStyles from './styles';
 const NavBar = () => {
   const classes = useStyles();
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6" component="div">
-          MomenTing
-        </Typography>
+        <Link href="/home" underline="none" color="inherit">
+          <Typography variant="h6" component="div">
+            MomenTing
+          </Typography>
+        </Link>
       </Toolbar>
     </AppBar>
   );

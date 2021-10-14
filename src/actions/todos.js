@@ -1,4 +1,5 @@
 import * as api from '../api/todoApi';
+import todos from '../reducers/todos';
 
 //액션 생성자
 export const getTodos = () => async (dispatch) => {
@@ -13,7 +14,7 @@ export const getTodos = () => async (dispatch) => {
 export const createTodo = (todo) => async (dispatch) => {
   try {
     const { data } = await api.createTodo(todo);
-
+    console.log(data);
     dispatch({ type: 'TODO_CREATE', payload: data.data });
   } catch (error) {
     console.log(error);
@@ -25,6 +26,16 @@ export const updateTodo = (todo) => async (dispatch) => {
     const { data } = await api.updateTodo(todo);
 
     dispatch({ type: 'TODO_UPDATE', payload: data.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteTodo = (todo) => async (dispatch) => {
+  try {
+    await api.deleteTodo(todo);
+
+    dispatch({ type: 'TODO_DELETE', payload: todo });
   } catch (error) {
     console.log(error);
   }

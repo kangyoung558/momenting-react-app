@@ -7,7 +7,6 @@ import TodoHead from './TodoHead/TodoHead';
 const Todos = ({ todoId, setTodoId }) => {
   const todos = useSelector((state) => state.todos);
   const classes = useStyles();
-  console.log(todos);
   return (
     <Container maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>

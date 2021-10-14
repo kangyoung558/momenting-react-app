@@ -1,8 +1,7 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import { IconButton } from '@mui/material';
+import { AddCircleOutline } from '@material-ui/icons';
 import ModalTest from './ModalTest';
 
 const style = {
@@ -23,7 +22,9 @@ const Test = () => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <IconButton style={{ padding: 0 }} onClick={handleOpen}>
+        <AddCircleOutline />
+      </IconButton>
       <ModalTest open={open} handleClose={handleClose} />
     </div>
   );

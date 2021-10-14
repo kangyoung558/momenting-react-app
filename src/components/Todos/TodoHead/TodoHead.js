@@ -8,7 +8,6 @@ const TodoHead = ({ todos, todoId, setTodoId }) => {
   const classes = useStyles();
   const nowDate = dayjs().format('ll');
   const nowDay = dayjs().format('dddd');
-  console.log(todos);
   const undoneTodo = todos.filter((todo) => !todo.done);
 
   return (

@@ -6,6 +6,8 @@ export default (todos = [], action) => {
       return action.payload;
     case 'TODO_UPDATE':
       return action.payload;
+    case 'TODO_DELETE':
+      return todos.filter((todo) => todo !== action.payload);
 
     default:
       return todos;
