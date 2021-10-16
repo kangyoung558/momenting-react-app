@@ -13,7 +13,7 @@ const TodoHead = ({ todos, todoId, setTodoId }) => {
   return (
     <>
       <Grid container>
-        <Grid item lg={10}>
+        <Grid item xs={10} lg={10}>
           <Typography
             className={classes.typography}
             variant="h5"
@@ -42,7 +42,7 @@ const TodoHead = ({ todos, todoId, setTodoId }) => {
             할 일 {undoneTodo.length}개 남음
           </Typography>
         </Grid>
-        <Grid item lg={2} style={{ textAlign: 'end' }}>
+        <Grid item xs={2} lg={2} style={{ textAlign: 'end' }}>
           <AddTodo todoId={todoId} setTodoId={setTodoId} />
         </Grid>
       </Grid>

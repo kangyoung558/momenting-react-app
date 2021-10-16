@@ -1,18 +1,30 @@
-import { Box, Grid } from "@material-ui/core";
-import React from "react";
-import Auth from "../Auth/Auth";
-import useStyles from "./styles";
+import { Box, Grid } from '@material-ui/core';
+import React from 'react';
+import Auth from '../Auth/Auth';
 const Momenting = () => {
-  const classes = useStyles();
   return (
-    <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={5}>
-        소개영역
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid
+          item
+          xs={12}
+          lg={7}
+          style={{ backgroundColor: 'white', textAlign: 'center' }}
+        >
+          소개영역
+        </Grid>
+        <Grid item xs={12} lg={5}>
+          <Auth />
+        </Grid>
       </Grid>
-      <Grid item xs={7}>
-        <Auth />
-      </Grid>
-    </Grid>
+    </div>
   );
 };
 

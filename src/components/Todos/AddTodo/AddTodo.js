@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { IconButton } from '@mui/material';
-import { AddCircleOutline } from '@material-ui/icons';
-import { createTodo, updateTodo } from '../../../actions/todos';
+import React, { useState } from 'react';
+import { Fab } from '@mui/material';
+import { Add } from '@material-ui/icons';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ModalForm from '../Modal/ModalForm';
 
-const AddTodo = ({ todoId, setTodoId }) => {
-  const dispatch = useDispatch();
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#F5DF4D',
+    },
+  },
+});
 
+const AddTodo = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -16,9 +21,16 @@ const AddTodo = ({ todoId, setTodoId }) => {
 
   return (
     <div>
-      <IconButton style={{ padding: 0 }} onClick={handleOpen}>
-        <AddCircleOutline />
-      </IconButton>
+      <ThemeProvider theme={theme}>
+        <Fab
+          size="small"
+          color="secondary"
+          aria-label="add"
+          onClick={handleOpen}
+        >
+          <Add style={{ color: '#939597' }} />
+        </Fab>
+      </ThemeProvider>
       <ModalForm open={open} setOpen={setOpen} handleClose={handleClose} />
     </div>
   );

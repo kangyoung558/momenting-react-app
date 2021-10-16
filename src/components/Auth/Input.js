@@ -1,8 +1,16 @@
-import React from "react";
-import { TextField, Grid, InputAdornment, IconButton } from "@material-ui/core";
+import React from 'react';
+import { TextField, Grid, InputAdornment, IconButton } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#F5DF4D',
+    },
+  },
+});
+
 const input = ({
   name,
   handleChange,
@@ -14,29 +22,36 @@ const input = ({
 }) => {
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>
-      <TextField
-        name={name}
-        onChange={handleChange}
-        variant="outlined"
-        required
-        fullWidth
-        label={label}
-        autoFocus={autoFocus}
-        type={type}
-        InputProps={
-          name === "password"
-            ? {
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleShowPassword}>
-                      {type === "password" ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }
-            : null
-        }
-      />
+      <ThemeProvider theme={theme}>
+        <TextField
+          name={name}
+          onChange={handleChange}
+          variant="outlined"
+          required
+          fullWidth
+          label={label}
+          autoFocus={autoFocus}
+          type={type}
+          color="secondary"
+          InputProps={
+            name === 'password'
+              ? {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword}>
+                        {type === 'password' ? (
+                          <Visibility />
+                        ) : (
+                          <VisibilityOff />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }
+              : null
+          }
+        />
+      </ThemeProvider>
     </Grid>
   );
 };
