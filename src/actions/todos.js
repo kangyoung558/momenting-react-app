@@ -7,12 +7,16 @@ import {
 import * as api from '../api/todoApi';
 
 //액션 생성자
-export const getTodos = () => async (dispatch) => {
+export const getTodos = (history) => async (dispatch) => {
   try {
     const { data } = await api.fetchTodo();
     dispatch({ type: TODO_FETCH_ALL, payload: data.data });
   } catch (error) {
     console.log(error);
+    if (error.response.status === 403) {
+      alert('로그인 후에 이용해 주세요~~');
+      history.push('/');
+    }
   }
 };
 

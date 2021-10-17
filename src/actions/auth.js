@@ -10,6 +10,7 @@ export const signin = (formData, history) => async (dispatch) => {
     history.push('/home');
   } catch (error) {
     console.log(error);
+    alert('회원정보를 확인해주세요.');
   }
 };
 

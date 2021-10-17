@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Avatar, Button } from '@material-ui/core';
 import useStyles from './styles';
+
 const NavBar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -22,7 +23,6 @@ const NavBar = () => {
     const token = user?.token;
 
     setUser(JSON.parse(localStorage.getItem('profile')));
-    console.log(user);
   }, [location]);
 
   return (
@@ -38,33 +38,22 @@ const NavBar = () => {
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
-        {user ? (
-          <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user.username}>
-              {user.username.charAt(0)}
-            </Avatar>
-            <Typography className={classes.userName} variant="h6">
-              {user?.username}
-            </Typography>
-            <Button
-              variant="contained"
-              className={classes.logout}
-              style={{ color: '#939597', backgroundColor: '#F5DF4D' }}
-              onClick={logout}
-            >
-              로그아웃
-            </Button>
-          </div>
-        ) : (
+        <div className={classes.profile}>
+          <Avatar className={classes.purple} alt={user?.username}>
+            {user?.username.charAt(0)}
+          </Avatar>
+          <Typography className={classes.userName} variant="h6">
+            {user?.username}
+          </Typography>
           <Button
-            component={Link}
-            to="/"
             variant="contained"
+            className={classes.logout}
             style={{ color: '#939597', backgroundColor: '#F5DF4D' }}
+            onClick={logout}
           >
-            로그인
+            로그아웃
           </Button>
-        )}
+        </div>
       </Toolbar>
     </AppBar>
   );

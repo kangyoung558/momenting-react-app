@@ -20,7 +20,7 @@ import { createTodo, updateTodo } from '../../../actions/todos';
 const theme = createTheme({
   palette: {
     success: {
-      main: '#20c997',
+      main: '#F5DF4D',
     },
   },
 });
@@ -126,7 +126,7 @@ const Form = ({ open, setOpen, handleClose, todoId, setTodoId }) => {
             color="success"
             type="submit"
             fullWidth
-            style={{ marginTop: 20, color: 'white' }}
+            style={{ marginTop: 20, color: '#939597' }}
           >
             {todoId ? '할 일 수정' : '할 일 추가'}
           </Button>
