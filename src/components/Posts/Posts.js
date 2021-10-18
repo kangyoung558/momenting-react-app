@@ -1,9 +1,12 @@
 import React from 'react';
-import Form from './Form/Form';
+import Post from './Post/Post';
+import PostDialog from './PostDialog/PostDialog';
 const Posts = () => {
   return (
     <>
-      <Form />
+      <PostDialog />
+      <Post />
+      <Post />
     </>
   );
 };
