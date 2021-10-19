@@ -9,7 +9,7 @@ import TodoHead from './TodoHead/TodoHead';
 const Todos = ({ todoId, setTodoId }) => {
   const todos = useSelector((state) => state.todos);
   const today = dayjs().get('date');
-
+  console.log(todos);
   const todayTodos = todos.filter(
     (todo) => dayjs(todo.endDate).get('date') - today >= 0
   );

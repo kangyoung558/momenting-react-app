@@ -16,7 +16,7 @@ const PostDialog = () => {
   };
 
   return (
-    <Container maxWidth="lg" style={{ padding: 0 }}>
+    <Container maxWidth="lg" style={{ padding: 0, marginBottom: 12 }}>
       <Paper elevation={3} style={{ borderRadius: 10 }}>
         <Grid container>
           <Grid item xs={1} lg={1} style={{ display: 'flex', padding: 8 }}>

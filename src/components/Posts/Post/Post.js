@@ -14,6 +14,8 @@ import {
   Popper,
   Paper,
   Dialog,
+  Collapse,
+  Button,
 } from '@mui/material';
 import {
   MoreVert,
@@ -30,13 +32,21 @@ import {
   PostReplyBtn,
   PostDeleteBtn,
   PostUpdateBtn,
+  ExpandMore,
 } from '../custom';
+import ReplyForm from '../../Reply/ReplyForm';
+import Reply from '../../Reply/Reply';
 
 const Post = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const nowDate = dayjs().format('ll');
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   const handleDialogOpen = () => {
     setDialogOpen(true);
@@ -53,7 +63,7 @@ const Post = () => {
   const popperOpen = Boolean(anchorEl);
 
   return (
-    <Card style={{ marginTop: 12 }}>
+    <Card style={{ marginBottom: 12 }}>
       <CardContent>
         <Grid container>
           <Grid
@@ -119,7 +129,13 @@ const Post = () => {
             lg={6}
             style={{ display: 'flex', justifyContent: 'flex-end' }}
           >
-            <Typography variant="subtitle2">댓글 2개</Typography>
+            <PostReplyBtn
+              onClick={handleExpandClick}
+              aria-label="show more"
+              sx={{ padding: 0 }}
+            >
+              <Typography variant="subtitle2">댓글 2개</Typography>
+            </PostReplyBtn>
           </Grid>
         </Grid>
       </CardContent>
@@ -133,13 +149,25 @@ const Post = () => {
             </PostLikeBtn>
           </Grid>
           <Grid item xs={6} lg={6}>
-            <PostReplyBtn fullWidth>
+            <PostReplyBtn
+              fullWidth
+              onClick={handleExpandClick}
+              aria-label="show more"
+            >
               <ChatBubbleOutline />
               &nbsp; 댓글달기
             </PostReplyBtn>
           </Grid>
         </Grid>
       </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Divider />
+        <CardContent>
+          <Reply />
+          <Reply />
+          <ReplyForm />
+        </CardContent>
+      </Collapse>
     </Card>
   );
 };

@@ -62,3 +62,18 @@ export const PostDeleteBtn = styled(Button)(({ theme }) => ({
     backgroundColor: '#e0e0e0',
   },
 }));
+
+export const ReplyTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      border: 'none',
+    },
+  },
+  backgroundColor: '#f0f2f5',
+  borderRadius: 20,
+}));
+
+export const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <PostReplyBtn {...other} />;
+});
