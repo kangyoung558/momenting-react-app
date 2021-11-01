@@ -3,7 +3,6 @@ import { Button, IconButton, TextField } from '@mui/material';
 
 export const PostFormOpenBtn = styled(Button)(({ theme }) => ({
   backgroundColor: '#f5f5f5',
-  width: '630px',
   color: '#9e9e9e',
   justifyContent: 'flex-start',
   '&:hover': {
@@ -38,6 +37,13 @@ export const PostSubmitBtn = styled(Button)(({ theme }) => ({
 
 export const PostLikeBtn = styled(Button)(({ theme }) => ({
   color: '#65676b',
+  '&:hover': {
+    backgroundColor: '#e0e0e0',
+  },
+}));
+
+export const PostUnLikeBtn = styled(Button)(({ theme }) => ({
+  color: '#f5df4d',
   '&:hover': {
     backgroundColor: '#e0e0e0',
   },

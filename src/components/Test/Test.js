@@ -1,18 +1,50 @@
-import React from 'react';
-import { IconButton } from '@mui/material';
-import { AddCircleOutline } from '@material-ui/icons';
-import ModalTest from './ModalTest';
+import React, { useState } from 'react';
+import { IconButton, Button } from '@mui/material';
+import { PhotoCamera } from '@material-ui/icons';
 
 const Test = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [prevImg, setPrevImg] = useState('');
+  const [imgFile, setImgFile] = useState(null);
+
+  const handleChangeFile = (e) => {
+    if (e.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        console.log(e.target.result);
+        setPrevImg(e.target.result);
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+      setImgFile(e.target.files[0]);
+    }
+  };
+
+  const deleteFilePrevImg = () => {
+    setPrevImg('');
+    setImgFile(null);
+  };
+
   return (
     <div>
-      <IconButton style={{ padding: 0 }} onClick={handleOpen}>
-        <AddCircleOutline />
-      </IconButton>
-      <ModalTest open={open} handleClose={handleClose} />
+      <label htmlFor="icon-button-file">
+        <input
+          accept="image/*"
+          id="icon-button-file"
+          type="file"
+          onChange={handleChangeFile}
+        />
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+        >
+          <PhotoCamera />
+        </IconButton>
+      </label>
+
+      <img src={prevImg} alt="First slide" />
+      <Button onClick={deleteFilePrevImg}>삭제</Button>
     </div>
   );
 };

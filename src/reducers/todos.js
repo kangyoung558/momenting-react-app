@@ -11,9 +11,11 @@ export default (todos = [], action) => {
     case TODO_FETCH_ALL:
       return action.payload;
     case TODO_CREATE:
-      return action.payload;
+      return [...todos, action.payload];
     case TODO_UPDATE:
-      return action.payload;
+      return todos.map((todo) =>
+        todo === action.payload ? action.payload : todo
+      );
     case TODO_DELETE:
       return todos.filter((todo) => todo !== action.payload);
 

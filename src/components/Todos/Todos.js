@@ -15,7 +15,7 @@ const Todos = ({ todoId, setTodoId }) => {
   );
   const classes = useStyles();
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="lg">
       <Paper className={classes.paper} elevation={3}>
         <TodoHead todoId={todoId} setTodoId={setTodoId} todos={todos} />
         {todayTodos.map((todo) => (

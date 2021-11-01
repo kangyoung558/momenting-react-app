@@ -4,7 +4,7 @@ import {
   TODO_UPDATE,
   TODO_DELETE,
 } from '../constants/actionType';
-import * as api from '../api/todoApi';
+import * as api from '../api/apiService';
 
 //액션 생성자
 export const getTodos = (history) => async (dispatch) => {
@@ -24,7 +24,7 @@ export const createTodo = (todo) => async (dispatch) => {
   try {
     const { data } = await api.createTodo(todo);
     console.log(data);
-    dispatch({ type: TODO_CREATE, payload: data.data });
+    dispatch({ type: TODO_CREATE, payload: data });
   } catch (error) {
     console.log(error);
   }

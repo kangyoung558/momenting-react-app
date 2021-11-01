@@ -8,7 +8,11 @@ const TodoHead = ({ todos, todoId, setTodoId }) => {
   const classes = useStyles();
   const nowDate = dayjs().format('ll');
   const nowDay = dayjs().format('dddd');
-  const undoneTodo = todos.filter((todo) => !todo.done);
+  const today = dayjs().get('date');
+  const todayTodos = todos.filter(
+    (todo) => dayjs(todo.endDate).get('date') - today >= 0
+  );
+  const undoneTodo = todayTodos.filter((todo) => !todo.done);
 
   return (
     <>
